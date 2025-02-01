@@ -24,7 +24,6 @@ box4.addEventListener("click",function(event){
     con.append(div)
     over.style.display="none"
     pop.style.display="none"
-    localStorage.setItem(div);
 })
 
 function erase(event)
