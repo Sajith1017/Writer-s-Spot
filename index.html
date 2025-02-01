@@ -68,3 +68,57 @@
 </body>
 
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Writers Spot</title>
+    <style>
+        /* உங்கள் CSS இங்கே சேர்க்கலாம் */
+    </style>
+</head>
+<body>
+    <h1>Writers Spot</h1>
+    <h2>Write your own advice, comedy & poem.</h2>
+
+    <textarea id="userContent" placeholder="Write here..." rows="10" cols="50"></textarea>
+    <br>
+    <button onclick="saveContent()">Save</button>
+    <button onclick="clearContent()">Clear</button>
+
+    <script>
+        // பக்கத்தை ஏற்றும் போது (onload), Local Storage-ல் உள்ள பதிவுகளை (content) காட்டும்
+        window.onload = function() {
+            displayContent();
+        };
+
+        // பதிவுகளை (content) Local Storage-ல் சேமிக்கும்
+        function saveContent() {
+            const content = document.getElementById('userContent').value;
+            if (content.trim() !== "") {
+                localStorage.setItem('userContent', content);
+                alert('Your content has been saved!');
+            } else {
+                alert('Please write something before saving.');
+            }
+        }
+
+        // Local Storage-ல் உள்ள பதிவுகளை (content) காட்டும்
+        function displayContent() {
+            const savedContent = localStorage.getItem('userContent');
+            if (savedContent) {
+                document.getElementById('userContent').value = savedContent;
+            }
+        }
+
+        // பதிவுகளை (content) அழிக்கும்
+        function clearContent() {
+            const confirmation = confirm('Are you sure you want to delete your content?');
+            if (confirmation) {
+                localStorage.removeItem('userContent');
+                document.getElementById('userContent').value = '';
+                alert('Your content has been deleted.');
+            }
+        }
+    </script>
+</body>
+</html>
