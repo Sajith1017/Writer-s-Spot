@@ -69,7 +69,7 @@ var box4 = document.getElementById("box4");
 var con = document.querySelector(".container");
 
 // Page Load ஆனதும் Local Storage Data Load செய்ய
-/*window.onload = function () {
+window.onload = function () {
     displaySavedBooks();
 };
 
@@ -144,7 +144,7 @@ function displaySavedBooks() {
 }
 
 // Function to Delete a Book from Local Storage
-function deleteBook(index) {
+/*function deleteBook(index) {
     var books = JSON.parse(localStorage.getItem("books")) || [];
 
     books.splice(index, 1); // Remove Selected Book
@@ -152,76 +152,6 @@ function deleteBook(index) {
     localStorage.setItem("books", JSON.stringify(books)); // Update Storage
 
     displaySavedBooks(); // Refresh Display
-            }*/
+            }
 
 // When page loads, display books from Local Storage
-window.onload = function () {
-    displaySavedBooks(); // Display books on page load
-};
-
-// Save Book to Local Storage
-box4.addEventListener("click", function (event) {
-    event.preventDefault();
-
-    // Create a book object with the details
-    const book = {
-        author: box1.value,
-        title: box2.value,
-        content: box3.value
-    };
-
-    // Get current books (if any) from localStorage, or initialize an empty array
-    let books = JSON.parse(localStorage.getItem("books")) || [];
-
-    // Add the new book to the array
-    books.push(book);
-
-    // Save updated books array to Local Storage
-    localStorage.setItem("books", JSON.stringify(books));
-
-    // Display the books after adding the new one
-    displaySavedBooks();
-
-    // Close the popup
-    over.style.display = "none";
-    pop.style.display = "none";
-});
-
-// Function to display saved books from Local Storage
-function displaySavedBooks() {
-    const books = JSON.parse(localStorage.getItem("books")) || [];
-    con.innerHTML = "";  // Clear the existing book container
-
-    // Loop through the saved books and display them
-    books.forEach(function (book) {
-        var div = document.createElement("div");
-        div.setAttribute("class", "bookcontainer");
-        div.innerHTML = `
-            <h2>${book.author}</h2>
-            <h5>${book.title}</h5>
-            <P>${book.content}</P>
-            <button onclick="erase(event)">Delete</button>
-        `;
-        con.append(div);
-    });
-}
-
-// Function to erase a book from both the page and Local Storage
-function erase(event) {
-    const bookElement = event.target.parentElement;
-    const bookTitle = bookElement.querySelector("h5").textContent;
-
-    // Get existing books
-    let books = JSON.parse(localStorage.getItem("books")) || [];
-
-    // Remove the book from the array
-    books = books.filter(function (book) {
-        return book.title !== bookTitle;
-    });
-
-    // Update Local Storage with the updated books array
-    localStorage.setItem("books", JSON.stringify(books));
-
-    // Remove the book element from the DOM
-
-}
