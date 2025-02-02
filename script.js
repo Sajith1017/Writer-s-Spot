@@ -147,7 +147,7 @@ function displaySavedBooks() {
 function deleteBook(index) {
     var books = JSON.parse(localStorage.getItem("books")) || [];
 
-   // books.splice(index, 1); // Remove Selected Book
+   books.splice(index, 1); // Remove Selected Book
 
     localStorage.setItem("books", JSON.stringify(books)); // Update Storage
 
