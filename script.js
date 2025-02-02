@@ -223,5 +223,5 @@ function erase(event) {
     localStorage.setItem("books", JSON.stringify(books));
 
     // Remove the book element from the DOM
-    bookElement.remove();
+
 }
