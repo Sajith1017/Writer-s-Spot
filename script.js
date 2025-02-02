@@ -57,36 +57,3 @@ box4.addEventListener("click",function(event){
 function erase(event)
 
 {event.target.parentElement.remove()}
-
-window.onload = function() {
-    displayContent();
-};
-
-function saveContent() {
-    const content = document.getElementById('userContent').value;
-    if (content.trim() !== "") {
-        localStorage.setItem("userContent", content);
-        alert("Your content has been saved!");
-    } else {
-        alert("Please write something before saving.");
-    }
-}
-
-function displayContent() {
-    const savedContent = localStorage.getItem("userContent");
-    if (savedContent) {
-        document.getElementById("userContent").value = savedContent;
-    }
-}
-
-function clearContent() {
-    const confirmation = confirm("Are you sure you want to delete your content?");
-    if (confirmation) {
-        localStorage.removeItem("userContent");
-        document.getElementById("userContent").value = "";
-        alert("Your content has been deleted.");
-    }
-}
-
-
-
